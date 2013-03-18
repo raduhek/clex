@@ -1,0 +1,104 @@
+! DO NO ALTER THESE COMMENTS
+! THE FIRST NON-EMPTY LINE SPECIFIES NUMBER OF STATES
+!
+! This file describes the automata
+! used for lexical analysis
+!
+! Warning : a line should not exceed 128 characters
+!
+!
+! The format is in the following form
+!
+! <state> : -1 | 0 | <n>
+! -1 means an error
+! 0 means the state is not final
+! <n> (integer) means it's final with type n (see token.h)
+!
+! <state> <char> | encoding > -> <state>
+!
+! Number of states
+20
+!!! States
+! 0 is the first statte
+0 : 0
+1 : 2
+2 : 0
+3 : 1
+4 : 0
+5 : 1
+6 : 0
+7 : 1
+8 : 1
+9 : 1
+10 : 1
+11 : 0
+12 : 1
+13 : 0
+14 : 1
+15 : 1
+16 : 0
+17 : 1
+18 : 0
+19 : 1
+20 : 0
+
+! # is a digit
+! $ is a octal digit
+! @ is a hexa digit
+
+! ints, floats and exp
+
+0 # -> 1
+0 . -> 1
+1 # -> 1
+! float
+1 . -> 2
+2 # -> 3
+3 # -> 3
+3 e -> 4
+3 E -> 4
+4 + -> 5
+4 - -> 5
+4 # -> 5
+4 . -> 5
+5 # -> 5
+5 . -> 6
+6 # -> 7
+7 l -> 8
+7 L -> 8
+7 f -> 8
+7 F -> 8
+
+
+! Octal numbers
+
+0 0 -> 9
+9 $ -> 10
+10 $ -> 10
+10 . -> 2
+! 10 . -> 11
+! 11 # -> 12
+! 12 # -> 12
+! 12 e -> 13
+! 12 E -> 13
+! 13 # -> 14
+! 14 # -> 14
+! 14 l -> 15
+! 14 L -> 15
+! 14 f -> 15
+! 14 F -> 15
+
+! Hexa
+9 x -> 16
+16 @ -> 17
+17 @ -> 17
+17 . -> 18
+! decimal part
+18 # -> 19
+19 # -> 19
+19 p -> 20
+19 P -> 20
+20 # -> 4
+20 + -> 4
+20 - -> 4
+
