@@ -18,7 +18,6 @@ void open_file() {
 }
 
 void set_source(char *file) {
-    char *ff;
     if (!_file_path) {
         free(_file_path);
     }
