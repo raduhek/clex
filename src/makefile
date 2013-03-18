@@ -7,4 +7,5 @@ all:
 	$(CC) -o main main.c reader.o
 clean:
 	rm -rf *.o
+	rm -rf *.c
 
