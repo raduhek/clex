@@ -1,0 +1,20 @@
+void main()
+{
+int no;
+no=10;
+int no1;
+no1=20;
+int r;
+r=no+no1;
+printf(“The addition of two number is %d\n”,r);
+r=no/no1;
+printf(“The divisionof two number is %d\n”,r);
+r=no*no1;
+printf(“The multiplication of two number is %d\n”,r);
+r=no-no1;
+printf(“The substration of two number is %d\n”,r);
+r=no%no1;
+printf(“The modul of two number is %d\n”,r);
+//For more details log on to www.sharebca.com
+}
+

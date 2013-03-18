@@ -1,0 +1,7 @@
+const int no=10;
+void main()
+{
+printf(“%d”,no);
+//For more details log on to www.sharebca.com
+}
+

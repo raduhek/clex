@@ -1,0 +1,8 @@
+void main()
+{
+int no;
+no=10;
+printf(“The no variable is assigned value %d “, no);
+//For more details log on to www.sharebca.com
+}
+

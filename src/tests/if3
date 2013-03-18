@@ -1,0 +1,6 @@
+void main()
+{
+(1<0)?printf(“True”): printf(“False”);
+//For more details log on to www.sharebca.com
+}
+

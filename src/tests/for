@@ -1,0 +1,10 @@
+void main()
+{
+int i=0;
+for(i=0; i<5; i++)
+{
+printf(“This will be displayed 5 times\n”);
+}
+//For more details log on to www.sharebca.com
+}
+

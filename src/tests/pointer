@@ -1,0 +1,14 @@
+void main()
+{
+int a=10;
+int *no;
+no=&a;
+printf("This will print address of the variable where pointer variable is
+pointing to that is a's address %d\n",no);
+printf("This will print address of the pointer variable no %d\n",&no);
+printf("This will print number stored on the variable which is been pointed
+bye the pointer no, That is a's value %d\n",*no);
+printf("We are simpli printing address of variable a %d\n",&a);
+//For more details log on to www.sharebca.com
+}
+

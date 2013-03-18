@@ -1,0 +1,15 @@
+void main()
+{
+int no;
+no=10;
+if(no<20)
+{
+printf(“Number is less than 20”);
+}
+else
+{
+printf(“Number is less than 20”);
+}
+//For more details log on to www.sharebca.com
+}
+

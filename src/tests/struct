@@ -1,0 +1,14 @@
+struct product
+{
+char p_name[50];
+int p_date;
+float p_price;
+char p_supply[50];
+}p1,p2,p3;
+void main()
+{
+printf("Enter product 1 detail");
+scanf("%s%d%f%s",p1.p_name,&p1.p_date,&p1.p_price,p1.p_supply);
+//For more details log on to www.sharebca.com
+}
+

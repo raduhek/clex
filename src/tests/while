@@ -1,0 +1,11 @@
+void main()
+{
+int i=0;
+while(i<5)
+{
+printf(“This will be displayed 5 times\n”);
+i++;
+}
+//For more details log on to www.sharebca.com
+}
+

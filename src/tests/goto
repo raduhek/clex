@@ -1,0 +1,13 @@
+void main()
+{
+int x;
+read:
+scanf("%d",&x);
+if(x<0)
+{
+goto read;
+}
+printf("%d",x);
+//For more details log on to www.sharebca.com
+}
+
