@@ -19,5 +19,6 @@ typedef struct node {
 
 extern node_t **nodes;
 void add_transition(node_t *n, char c, int next);
+node_t* get_next(node_t *current_node, char c); 
 
 #endif
