@@ -52,17 +52,19 @@ void add_transition(node_t *n, char c, int next) {
 
 node_t* get_next(node_t *current_node, char c) {
     int i, j, k;
-    int rc_size = strlen(current_node->reaching_chars);
+    int rc_size; 
     int next_index = (int)c % NEXT_HASH_MOD;
 
-    // WTF ??
-    if (rc_size == 0) {
-        printf("Non reachable node: %d", current_node->index);
-    }
 
     // We know the bucket of nodes possible to be reached with char
     // Find the node that can actually be reached
     for (i = 0, k = current_node->sizes[next_index]; i < k; ++i) {
+        rc_size = strlen(nodes[current_node->next[next_index][i]]->reaching_chars);
+
+        // WTF??
+        if (rc_size == 0) {
+            printf("Unreachable node: %d\n", current_node->next[next_index][i]);
+        }
         for (j = 0; j < rc_size; ++j) {
             if (nodes[current_node->next[next_index][i]]->reaching_chars[j] == c) {
                 // Found it! Return it
