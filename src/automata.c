@@ -5,7 +5,8 @@
 
 void build_automata() {
     char line[128];
-    int k, j, number_of_states;
+    // int k, j;
+    int number_of_states;
     int i, state_index, next_state_index, token_type;
     char transition_char;
     FILE *spec_file = fopen("automata.data", "r");
@@ -79,7 +80,3 @@ void build_automata() {
     */
 }
 
-int main() {
-    build_automata();
-    return 0;
-}
