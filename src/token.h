@@ -1,7 +1,7 @@
-#ifndef TOKEN_H
-#define TOKEN_h
+#ifndef TOKEN_HG
+#define TOKEN_HG
 
-char *types_array[5] = {"BLANK", "IDENTIFIER", "KEYWORD", "OPERATOR", "COMMENT"};
+extern char *types_array[5];
 
 typedef enum {
     IDENTIFIER,
@@ -10,8 +10,5 @@ typedef enum {
     COMMENT,
 } token_type_t;
 
-char *get_token_type(token_type_t t) {
-    return types_array[t];
-}
-
+char *get_token_type(token_type_t t);
 #endif
