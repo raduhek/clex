@@ -20,7 +20,7 @@ void build_automata() {
         fgets(line, sizeof(line), spec_file);
     } while ((line != NULL) && line[0] == '!');
 
-    if (!line) {
+    if (line == NULL) {
         printf("automata.data is not properly formatted\n");
         exit (3);
     }
@@ -35,7 +35,7 @@ void build_automata() {
         fgets(line, sizeof(line), spec_file);
     } while ((line != NULL) && line[0] == '!');
     // Did we get to end of file already
-    if (!line) {
+    if (line == NULL) {
         printf("automata.data is not properly formatted\n");
         exit (4);
     }
