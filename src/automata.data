@@ -1,5 +1,4 @@
 ! DO NO ALTER THESE COMMENTS
-! THE FIRST NON-EMPTY LINE SPECIFIES NUMBER OF STATES
 !
 ! This file describes the automata
 ! used for lexical analysis
@@ -17,8 +16,12 @@
 ! <state> <char> | encoding > -> <state>
 !
 ! Number of states
-20
+
+21
+
 !!! States
+
+
 ! 0 is the first statte
 0 : 0
 1 : 2
@@ -101,4 +104,3 @@
 20 # -> 4
 20 + -> 4
 20 - -> 4
-
