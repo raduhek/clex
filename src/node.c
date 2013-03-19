@@ -6,22 +6,9 @@
 node_t **nodes;
 
 void add_transition(node_t *n, char c, int next) {
-    int rc_limit;
+    int rc_limit = 0;
     int next_index = (int)c % NEXT_HASH_MOD;
 
-    rc_limit = strlen(nodes[next]->reaching_chars);
-    // Do we have room for reaching characters?
-    if (rc_limit == REACH_CHAR_LIMIT ) {
-        printf(
-            "Node reaching_chars limit exceeded for node: %d with char %c from node %d (limit %d | chars %s)\n",
-            next,
-            c,
-            n->index,
-            rc_limit,
-            nodes[next]->reaching_chars
-        );
-        exit(10);
-    }
 
     // No transition for this character yet
     if (n->next[next_index] == NULL) {
@@ -33,6 +20,20 @@ void add_transition(node_t *n, char c, int next) {
         n->next[next_index][0] = next;
         n->sizes[next_index] = 1;
     } else {
+        // Do we have room for reaching characters?
+        rc_limit = strlen(nodes[next]->reaching_chars);
+        if (rc_limit == REACH_CHAR_LIMIT ) {
+            printf(
+                "Node reaching_chars limit exceeded for node: %d with char %c from node %d (limit %d | chars %s)\n",
+                next,
+                c,
+                n->index,
+                rc_limit,
+                nodes[next]->reaching_chars
+            );
+            exit(10);
+        }
+
         // A transition has been added before
         // Increase the size of @next array
         int nodes_size = n->sizes[next_index] + 1;
@@ -47,7 +48,6 @@ void add_transition(node_t *n, char c, int next) {
     }
     
     nodes[next]->reaching_chars[rc_limit] = c;
-    printf("%d\n", rc_limit);
 }
 
 node_t* get_next(node_t *current_node, char c) {
