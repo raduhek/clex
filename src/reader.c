@@ -13,6 +13,7 @@ void open_file() {
     _source_file = fopen(_file_path, "r");
 
     if (!_source_file) {
+        printf("could not allocate memory for _source_file (reader.c)");
         exit(1);
     }
 }
@@ -25,7 +26,12 @@ void set_source(char *file) {
         fclose(_source_file);
     }
 
-    _file_path = malloc( strlen(file) * sizeof(char) );
+    _file_path = (char*)malloc( strlen(file) * sizeof(char) );
+    if (!_file_path) {
+        printf("could not allocate memory for _file_path (reader.c)");
+        exit(2);
+    }
+
     strcpy(_file_path, file);
 }
 
