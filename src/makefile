@@ -7,7 +7,9 @@ all:
 	$(CC) $(CCFLAGS) node.c
 	$(CC) $(CCFLAGS) automata.c
 	$(CC) $(CCFLAGS) token.c
-	$(CC) -o main main.c reader.o node.o automata.o token.o
+	$(CC) $(CCFLAGS) utils.c
+	$(CC) $(CCFLAGS) lexer.c
+	$(CC) -o main main.c reader.o node.o automata.o token.o utils.c lexer.c
 	make clean_o
 
 automata:
@@ -19,7 +21,7 @@ clean_o:
 
 clean:
 	rm -rf *.o
-	rm -rf token reader main automata
+	rm -rf token reader main automata utils lexer
 
 debug: CCFLAGS += -DDEBUG -g
 debug: all
