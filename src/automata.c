@@ -29,7 +29,7 @@ void build_automata() {
     sscanf(line, "%d", &number_of_states);
 
     // Initialize the nodes array
-    nodes = malloc(number_of_states * sizeof (node_t));
+    nodes = (node_t**)malloc(number_of_states * sizeof (node_t));
 
     if (!nodes) {
         printf("could not allocate memory for nodes\n");
@@ -48,7 +48,7 @@ void build_automata() {
         if (*line == '\n' || *line == '!') {
             continue;
         }
-        n = malloc(sizeof(node_t));
+        n = (node_t*)malloc(sizeof(node_t));
         sscanf(line, "%d : %d", &state_index, &token_type);
 
         n->type = token_type;
