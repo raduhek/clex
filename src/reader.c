@@ -13,7 +13,8 @@ void open_file() {
     _source_file = fopen(_file_path, "r");
 
     if (!_source_file) {
-        printf("could not allocate memory for _source_file (reader.c)");
+        printf("could not open file '%s'\n", _file_path);
+        printf("please chect that it exits or is not being opened by orther process (reader.c)\n");
         exit(1);
     }
 }
@@ -28,7 +29,7 @@ void set_source(char *file) {
 
     _file_path = (char*)malloc( strlen(file) * sizeof(char) );
     if (!_file_path) {
-        printf("could not allocate memory for _file_path (reader.c)");
+        printf("could not allocate memory for _file_path (reader.c)\n");
         exit(2);
     }
 
