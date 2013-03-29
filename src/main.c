@@ -8,18 +8,22 @@
 #include "token.h"
 
 int main() {
-    token_t *t = (token_t*)malloc(sizeof(token_t));
+    token_t t;
     build_automata();
     
-    prepare_lexer("test");
+    prepare_lexer("e");
 
-    *t = get_token();
-
-    if(t) {
-        printf("cool\n");
-    } else {
-        printf("oops\n");
+    while(get_token(&t) == 1) {
+        if (t.type == ROOT_T) {
+            // this is space
+            ;
+        } else if (t.type == BLANK_T) {
+            // this is wrong
+            printf("Lexical error found\n");
+            return 2;
+        } else {
+            printf("%s\n", get_token_type(t.type));
+        }
     }
-
     return 0;
 }
