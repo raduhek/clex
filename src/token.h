@@ -19,6 +19,7 @@ typedef enum {
     KEYWORD,
     OPERATOR,
     COMMENT,
+    VALUE
 } token_type_t;
 
 typedef struct token_struct {
