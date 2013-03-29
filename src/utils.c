@@ -18,14 +18,9 @@ char to_octa(char c) {
 
 
 char to_hexa(char c) {
-    int ret;
-    ret = (c - '0' >= 0) && (c - '0' <= 9);
-    ret = ret && (c >= 'a' && c <= 'f');
-    ret = ret && (c >= 'A' && c <= 'F');
+    if (to_digit(c) == '#') return '@';
+    if ((c < 'a' || c > 'f') && (c < 'A' || c > 'F')) return c;
 
-    if (ret) {
-        return '@';
-    }
-    return c;
+    return '@';
 }
 
