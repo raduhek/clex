@@ -9,8 +9,7 @@ all:
 	$(CC) $(CCFLAGS) token.c
 	$(CC) $(CCFLAGS) utils.c
 	$(CC) $(CCFLAGS) lexer.c
-	$(CC) -o main main.c reader.o node.o automata.o token.o utils.c lexer.c
-	make clean_o
+	$(CC) -o main main.c lexer.o reader.o node.o automata.o token.o utils.o
 
 automata:
 	$(CC) $(CCFLAGS) node.c
