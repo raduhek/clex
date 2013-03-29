@@ -23,14 +23,6 @@ void add_transition(node_t *n, char c, int next) {
         // Do we have room for reaching characters?
         rc_limit = strlen(nodes[next]->reaching_chars);
         if (rc_limit == REACH_CHAR_LIMIT ) {
-            printf(
-                "Node reaching_chars limit exceeded for node: %d with char %c from node %d (limit %d | chars %s)\n",
-                next,
-                c,
-                n->index,
-                rc_limit,
-                nodes[next]->reaching_chars
-            );
             exit(10);
         }
 
