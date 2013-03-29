@@ -64,7 +64,7 @@ void build_automata() {
         if (*line == '\n' || *line == '!' ) continue;
         sscanf(line, "%d %c -> %d", &state_index, &transition_char, &next_state_index);
         
-        add_transition(nodes[state_index], transition_char, next_state_index); 
+        add_transition(state_index, transition_char, next_state_index); 
     } 
 
     /*
