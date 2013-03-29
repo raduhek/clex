@@ -4,6 +4,6 @@
 #include "token.h"
 
 void prepare_lexer(char*);
-token_t get_token();
+int get_token();
 
 #endif

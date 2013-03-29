@@ -9,7 +9,6 @@
 
 node_t *current_state;
 node_t *previous_state;
-token_t *tok;
 /*
     prepare_lexer takes care of the setup, decoupling
     specific setup from the main() function
@@ -19,7 +18,6 @@ void prepare_lexer(char* file_name) {
     open_file();
     current_state = nodes[0];
     previous_state = NULL;
-    tok = (token_t*) malloc(sizeof(token_t));
 }
 
 /*
@@ -34,13 +32,10 @@ void prepare_lexer(char* file_name) {
         value of the token computed from chars read so far
 
 */
-token_t *get_token() {
+int get_token(token_t *tok) {
     char c;
-    /*
-        At first, previous_state is NULL
-        Root node's index is 0
-    */
-    while (previous_state == NULL && current_state->index != ROOT_I) {
+
+    while (c != EOF) {
         c = get_char();
         previous_state = current_state;
 
@@ -70,22 +65,13 @@ token_t *get_token() {
             if (previous_state->index != ROOT_I && previous_state->type != ROOT_T && previous_state->type != BLANK_T) {
                 tok->type = previous_state->type;
                 // We're done with this token
-                break;
             } else {
                 // Don't get here please
-                return NULL;
+                tok->type = ROOT_T;
             }
+            return 1;
         }
     }
 
-
-    /*
-        Here, current_state is the root 
-        so just set previous_state to NULL
-        for next get_token() call
-    */
-    previous_state = NULL;
-
-    // daca pun print aici, il printeaza
-    return NULL;
+    return 0;
 }
