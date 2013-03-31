@@ -56,30 +56,6 @@ int i = 0;
 
         current_state = get_next(current_state, c);
 
-        // If we got to root with the current caracter
-        // try again converting it to hexa
-        if (current_state->index == ROOT_I) {
-            current_state = get_next(previous_state, to_hexa(c));
-        }
-
-        // If we got to root with the caracter as hexa
-        // try again converting it to digit
-        if (current_state->index == ROOT_I) {
-            current_state = get_next(previous_state, to_digit(c));
-        }
-        
-        // If we got to root with the caracter as digit 
-        // try again converting it to octal
-        if (current_state->index == ROOT_I) {
-            current_state = get_next(previous_state, to_octa(c));
-        }
-
-        // If we got to root with the caracter as digit 
-        // try again converting it to letter
-        if (current_state->index == ROOT_I) {
-            current_state = get_next(previous_state, to_letter(c));
-        }
-
         // If we got back to root
         if (current_state->index == ROOT_I) {
             // Let's see if the previous state was a final state
