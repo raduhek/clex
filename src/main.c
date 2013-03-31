@@ -22,7 +22,7 @@ int main() {
             printf("Lexical error found\n");
             return 2;
         } else {
-            printf("%s\n", get_token_type(t.type));
+            printf("%s: %s\n", get_token_type(t.type), t.value);
         }
     }
     return 0;
