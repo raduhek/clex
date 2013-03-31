@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "reader.h"
+
 char *_file_path;
 FILE *_source_file;
 
@@ -17,6 +19,9 @@ void open_file() {
         printf("please chect that it exits or is not being opened by orther process (reader.c)\n");
         exit(1);
     }
+
+    row_number = 1;
+    column_number = 1;
 }
 
 void set_source(char *file) {
@@ -37,10 +42,20 @@ void set_source(char *file) {
 }
 
 char get_char() {
+    char c;
     if (!_source_file) {
         open_file();
     }
 
-    return fgetc(_source_file);
+    c = fgetc(_source_file);
+
+    if (c == '\n') {
+        row_number++;
+        column_number = 1;
+    } else {
+        column_number++;
+    }
+
+    return c;
 }
 
