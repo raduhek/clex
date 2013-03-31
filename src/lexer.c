@@ -64,8 +64,11 @@ int i = 0;
                 // We're done with this token
                 read_next = 0;
             } else {
-                // Don't get here please
-                tok->type = ROOT_T;
+                if (c == ' ') {
+                    tok->type = ROOT_T;
+                } else {
+                    tok->type = BLANK_T;
+                }
             }
             val[i - 1] = '\0';
             if (is_keyword(val) == 1) {
