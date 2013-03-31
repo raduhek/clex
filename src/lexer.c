@@ -46,7 +46,9 @@ int i = 0;
         prev_c = c;
         if (c == '\0' || read_next == 1) {
             c = get_char();
+            val[i++] = c;
         } else {
+            val[i++] = prev_c;
             read_next = 1;
         }
 
@@ -62,15 +64,15 @@ int i = 0;
                 tok->type = previous_state->type;
                 // We're done with this token
                 read_next = 0;
+                val[i - 1] = '\0';
             } else {
                 if (c == ' ' || c == '\n' || c == EOF) {
                     tok->type = ROOT_T;
                 } else {
                     tok->type = BLANK_T;
                 }
+                val[i] = '\0';
             }
-            val[i++] = prev_c;
-            val[i] = '\0';
             if (is_keyword(val) == 1) {
                 tok->type = KEYWORD_T;
             }
