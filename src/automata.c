@@ -3,6 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+    decode returns a special character that cannot be read from regular files
+    The encodings are hard-coded !!!
+*/
+char decode(char c) {
+    switch (c) {
+        case 'n': return '\n';
+        case 's': return ' ';
+        default:  return c;
+    }
+
+}
+
 void build_automata() {
     char line[128];
     // int i, k, j;
@@ -64,6 +77,7 @@ void build_automata() {
         if (*line == '\n' || *line == '!' ) continue;
         sscanf(line, "%d %c -> %d", &state_index, &transition_char, &next_state_index);
         
+        transition_char = decode(transition_char);
         add_transition(state_index, transition_char, next_state_index); 
     } 
 
