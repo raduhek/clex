@@ -12,10 +12,6 @@ all:
 	$(CC) $(CCFLAGS) lexer.c
 	$(CC) -o main main.c lexer.o reader.o node.o automata.o token.o utils.o keywords.o
 
-automata:
-	$(CC) $(CCFLAGS) node.c
-	$(CC) -o automata automata.c node.o
-
 clean_o:
 	rm -rf *.o
 
@@ -26,3 +22,11 @@ clean:
 debug: CCFLAGS += -DDEBUG -g
 debug: all
 
+help:
+	@echo "Available make options:"
+	@echo ""
+	@echo "make -> build executable"
+	@echo "make debug -> build executable with debug option"
+	@echo "make clean -> remove executable and object files"
+	@echo "make clean_o -> remove object files"
+	@echo "make help -> display this text"
