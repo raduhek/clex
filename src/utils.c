@@ -34,6 +34,14 @@ int expand(char c, int from_state, int to_state) {
                 add_transition(from_state, i, to_state);
             }
             return 1;
+        case 'c':
+            for (i = 'z'; i >= 'a'; --i) {
+                add_transition(from_state, i, to_state);
+            }
+            for (i = 'Z'; i >= 'A'; --i) {
+                add_transition(from_state, i, to_state);
+            }
+            return 1;
         default:
             return 0;
     }
