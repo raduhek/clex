@@ -5,6 +5,7 @@
 #include "reader.h"
 #include "node.h"
 #include "utils.h"
+#include "keywords.h"
 
 
 node_t *current_state;
@@ -91,6 +92,9 @@ int i = 0;
                 tok->type = ROOT_T;
             }
             val[i - 1] = '\0';
+            if (is_keyword(val) == 1) {
+                tok->type = KEYWORD_T;
+            }
             tok->value = val;
             return 1;
         }
