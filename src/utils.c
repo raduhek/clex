@@ -12,7 +12,7 @@ char decode(char c) {
 
 int expand(char c, int from_state, int to_state) {
     int i;
-    char weird[] = "~!@#$%^&*()_+[{]}\\|;:,<.>/?";
+    char weird[] = "~!@#$%^&()_+[{]}\\|;:,<.>/?";
     int W_L = 27;
     switch (c) {
         case 'o':
