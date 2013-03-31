@@ -3,19 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-    decode returns a special character that cannot be read from regular files
-    The encodings are hard-coded !!!
-*/
-char decode(char c) {
-    switch (c) {
-        case 'n': return '\n';
-        case 's': return ' ';
-        default:  return c;
-    }
-
-}
-
 void build_automata() {
     char line[128];
     // int i, k, j;
