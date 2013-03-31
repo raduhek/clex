@@ -14,6 +14,14 @@ char to_octa(char c) {
 }
 
 
+// comment
+
+/*
+ multiline cmm
+ end *
+ here again
+*/
+
 char to_hexa(char c) {
     if (to_digit(c) == '#') return '@';
     if ((c < 'a' || c > 'f') && (c < 'A' || c > 'F')) return c;
