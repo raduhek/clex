@@ -8,8 +8,9 @@ all:
 	$(CC) $(CCFLAGS) automata.c
 	$(CC) $(CCFLAGS) token.c
 	$(CC) $(CCFLAGS) utils.c
+	$(CC) $(CCFLAGS) keywords.c
 	$(CC) $(CCFLAGS) lexer.c
-	$(CC) -o main main.c lexer.o reader.o node.o automata.o token.o utils.o
+	$(CC) -o main main.c lexer.o reader.o node.o automata.o token.o utils.o keywords.o
 
 automata:
 	$(CC) $(CCFLAGS) node.c
@@ -20,7 +21,7 @@ clean_o:
 
 clean:
 	rm -rf *.o
-	rm -rf token reader main automata utils lexer
+	rm -rf token reader main automata utils lexer keywords
 
 debug: CCFLAGS += -DDEBUG -g
 debug: all
