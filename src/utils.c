@@ -9,3 +9,33 @@ char decode(char c) {
         default:  return c;
     }
 }
+
+int expand(char c, int from_state, int to_state) {
+    int i;
+    switch (c) {
+        case 'o':
+            for (i = '7'; i >= '0'; --i) {
+                add_transition(from_state, i, to_state);
+            }
+            return 1;
+        case 'd':
+            for (i = '9'; i >= '0'; --i) {
+                add_transition(from_state, i, to_state);
+            }
+            return 1;
+        case 'f':
+            for (i = '9'; i >= '0'; --i) {
+                add_transition(from_state, i, to_state);
+            }
+            for (i = 'a'; i >= 'f'; --i) {
+                add_transition(from_state, i, to_state);
+            }
+            for (i = 'A'; i >= 'F'; --i) {
+                add_transition(from_state, i, to_state);
+            }
+            return 1;
+        default:
+            return 0;
+    }
+}
+
