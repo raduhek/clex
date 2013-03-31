@@ -19,7 +19,7 @@ int main() {
             ;
         } else if (t.type == BLANK_T) {
             // this is wrong
-            printf("Lexical error found\n");
+            printf("Lexical error found at line %d column %d: %s\n", row_number, column_number, t.value);
             return 2;
         } else {
             printf("%s: %s\n", get_token_type(t.type), t.value);
