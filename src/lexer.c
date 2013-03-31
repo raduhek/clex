@@ -10,7 +10,7 @@
 
 node_t *current_state;
 node_t *previous_state;
-char c;
+char c, prev_c;
 char *val;
 int read_next;
 /*
@@ -43,14 +43,13 @@ int get_token(token_t *tok) {
 int i = 0;
 
     while (c != EOF) {
-        
+        prev_c = c;
         if (c == '\0' || read_next == 1) {
             c = get_char();
         } else {
             read_next = 1;
         }
 
-        val[i++] = c;
 
         previous_state = current_state;
 
@@ -70,7 +69,8 @@ int i = 0;
                     tok->type = BLANK_T;
                 }
             }
-            val[i - 1] = '\0';
+            val[i++] = prev_c;
+            val[i] = '\0';
             if (is_keyword(val) == 1) {
                 tok->type = KEYWORD_T;
             }
