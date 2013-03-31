@@ -8,18 +8,20 @@
 // ROOT_I = index of root node
 #define ROOT_I 0
 
-#define _NUMBER_OF_TOKENS 7
+#define _NUMBER_OF_TOKENS 9
 
 extern char *types_array[_NUMBER_OF_TOKENS];
 
 typedef enum {
-    ROOT,
-    BLANK,
-    IDENTIFIER,
-    KEYWORD,
-    OPERATOR,
-    COMMENT,
-    VALUE
+    ROOT,           // 0
+    BLANK,          // 1
+    IDENTIFIER,     // 2
+    KEYWORD,        // 3
+    OPERATOR,       // 4
+    COMMENT,        // 5
+    VALUE,          // 6
+    STRING,         // 7
+    CHAR            // 8
 } token_type_t;
 
 typedef struct token_struct {

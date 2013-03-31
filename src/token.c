@@ -7,7 +7,9 @@ char *types_array[_NUMBER_OF_TOKENS] = {
 		"KEYWORD",
 		"OPERATOR",
 		"COMMENT",
-        "VALUE"
+        "VALUE",
+        "STRING",
+        "CHAR"
 	};
 
 char *get_token_type(token_type_t t) {
