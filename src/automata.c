@@ -1,14 +1,17 @@
-#include "token.h"
-#include "node.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "token.h"
+#include "node.h"
+#include "utils.h"
 
 void build_automata() {
     char line[128];
     // int i, k, j;
     int number_of_states;
+    int expanded = 0;
     int state_index, next_state_index, token_type;
-    char transition_char;
+    char transition_char, decode_char;
     FILE *spec_file = fopen("automata.data", "r");
 
     if (!spec_file) {
@@ -64,8 +67,21 @@ void build_automata() {
         if (*line == '\n' || *line == '!' ) continue;
         sscanf(line, "%d %c -> %d", &state_index, &transition_char, &next_state_index);
         
-        transition_char = decode(transition_char);
-        add_transition(state_index, transition_char, next_state_index); 
+        decode_char = decode(transition_char);
+
+        // If char has been changed
+        if (decode_char != transition_char) {
+            add_transition(state_index, decode_char, next_state_index);
+            continue;
+        }
+
+        // If the char has not beed decoded
+        // try to expand
+        expanded = expand(transition_char, state_index, next_state_index);
+        // If char has not been expanded, add it as is
+        if (expanded == 0) {
+            add_transition(state_index, transition_char, next_state_index); 
+        }
     } 
 
     /*
