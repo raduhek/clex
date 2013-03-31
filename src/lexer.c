@@ -64,7 +64,7 @@ int i = 0;
                 // We're done with this token
                 read_next = 0;
             } else {
-                if (c == ' ') {
+                if (c == ' ' || c == '\n' || c == EOF) {
                     tok->type = ROOT_T;
                 } else {
                     tok->type = BLANK_T;
