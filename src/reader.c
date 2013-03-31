@@ -21,7 +21,7 @@ void open_file() {
     }
 
     row_number = 1;
-    column_number = 1;
+    column_number = 0;
 }
 
 void set_source(char *file) {
@@ -51,7 +51,7 @@ char get_char() {
 
     if (c == '\n') {
         row_number++;
-        column_number = 1;
+        column_number = 0;
     } else {
         column_number++;
     }
