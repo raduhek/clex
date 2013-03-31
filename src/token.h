@@ -8,6 +8,9 @@
 // ROOT_I = index of root node
 #define ROOT_I 0
 
+// Define KEYWORD_T to be used in lexer
+#define KEYWORD_T 3
+
 #define _NUMBER_OF_TOKENS 9
 
 extern char *types_array[_NUMBER_OF_TOKENS];
