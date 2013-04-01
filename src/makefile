@@ -10,7 +10,8 @@ all:
 	$(CC) $(CCFLAGS) utils.c
 	$(CC) $(CCFLAGS) keywords.c
 	$(CC) $(CCFLAGS) lexer.c
-	$(CC) -o main main.c lexer.o reader.o node.o automata.o token.o utils.o keywords.o
+	$(CC) $(CCFLAGS) value_table.c
+	$(CC) -o main main.c lexer.o reader.o node.o automata.o token.o utils.o keywords.o value_table.o
 
 clean_o:
 	rm -rf *.o

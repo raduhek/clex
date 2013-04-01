@@ -32,7 +32,7 @@ void build_automata() {
     sscanf(line, "%d", &number_of_states);
 
     // Initialize the nodes array
-    nodes = (node_t**)malloc(number_of_states * sizeof (node_t));
+    nodes = (node_t**)malloc(number_of_states * sizeof (node_t*));
 
     if (!nodes) {
         printf("could not allocate memory for nodes\n");

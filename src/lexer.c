@@ -6,6 +6,7 @@
 #include "node.h"
 #include "utils.h"
 #include "keywords.h"
+#include "value_table.h"
 
 
 node_t *current_state;
@@ -24,6 +25,7 @@ void prepare_lexer(char* file_name) {
     previous_state = NULL;
     val = (char*) malloc(MAX_VAL_LEN * sizeof(char));
     read_next = 1;
+    prepare_value_table();
 }
 
 /*
@@ -41,6 +43,7 @@ void prepare_lexer(char* file_name) {
 int get_token(token_t *tok) {
 
 int i = 0;
+int val_id;
 
     while (c != EOF) {
         prev_c = c;
@@ -58,34 +61,34 @@ int i = 0;
         current_state = get_next(current_state, c);
 
         // If we got back to root
-        if (current_state->index == ROOT_I) {
-            // Let's see if the previous state was a final state
-            if (previous_state->index != ROOT_I && previous_state->type != ROOT_T && previous_state->type != BLANK_T) {
-                tok->type = previous_state->type;
+        if (current_state->index == ROOT_I && current_state->type == ROOT_T) {
+
+            tok->type = previous_state->type;
+            val[i - 1] = '\0';
+            if (previous_state->type != BLANK_T) {
                 // We're done with this token
                 read_next = 0;
-                val[i - 1] = '\0';
-            } else {
-                if (c == ' ' || c == '\n') {
-                    tok->type = ROOT_T;
-                } else {
-                    tok->type = BLANK_T;
-                }
-                if (previous_state->index == ROOT_I || previous_state->type == BLANK_T) {
-                    tok->type = ROOT_T;
-                }
-                val[i] = '\0';
             }
-            if (is_keyword(val) == 1) {
-                tok->type = KEYWORD_T;
+
+            if (tok->type == COMMENT_T) {
+                i = 0;
+                read_next = 0;
+                continue;
             }
-            tok->value = val;
+
+
+            if (c == ' ' || c == '\r' || c == '\n') {
+                read_next = 1;
+            }
 
             if (tok->type == ROOT_T) {
                 i = 0;
-            } else {
-                return 1;
+                continue;
             }
+
+            val_id = get_or_create_entry(val, i);
+            tok->value = val_id;
+            return 1;
         }
     }
 

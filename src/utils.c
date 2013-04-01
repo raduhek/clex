@@ -5,6 +5,7 @@
 char decode(char c) {
     switch (c) {
         case 'n': return '\n';
+        case 'r': return '\r';
         case 's': return ' ';
         default:  return c;
     }
@@ -25,14 +26,14 @@ int expand(char c, int from_state, int to_state) {
                 add_transition(from_state, i, to_state);
             }
             return 1;
-        case 'f':
+        case 'h':
             for (i = '9'; i >= '0'; --i) {
                 add_transition(from_state, i, to_state);
             }
-            for (i = 'a'; i >= 'f'; --i) {
+            for (i = 'f'; i >= 'a'; --i) {
                 add_transition(from_state, i, to_state);
             }
-            for (i = 'A'; i >= 'F'; --i) {
+            for (i = 'F'; i >= 'A'; --i) {
                 add_transition(from_state, i, to_state);
             }
             return 1;
