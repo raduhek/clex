@@ -3,8 +3,8 @@
 
 #include "token.h"
 
-#define NEXT_HASH_MOD 7
-#define REACHERS_LIMIT 256
+#define NEXT_HASH_MOD 11 
+#define REACHERS_LIMIT 200
 
 typedef struct reach {
     char c;

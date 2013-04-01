@@ -66,10 +66,13 @@ int i = 0;
                 read_next = 0;
                 val[i - 1] = '\0';
             } else {
-                if (c == ' ' || c == '\n' || c == EOF) {
+                if (c == ' ' || c == '\n') {
                     tok->type = ROOT_T;
                 } else {
                     tok->type = BLANK_T;
+                }
+                if (previous_state->index == ROOT_I || previous_state->type == BLANK_T) {
+                    tok->type = ROOT_T;
                 }
                 val[i] = '\0';
             }
@@ -77,7 +80,12 @@ int i = 0;
                 tok->type = KEYWORD_T;
             }
             tok->value = val;
-            return 1;
+
+            if (tok->type == ROOT_T) {
+                i = 0;
+            } else {
+                return 1;
+            }
         }
     }
 

@@ -11,13 +11,10 @@ int main() {
     token_t t;
     build_automata();
     
-    prepare_lexer("e");
+    prepare_lexer("tt/p1.c");
 
     while(get_token(&t) == 1) {
-        if (t.type == ROOT_T) {
-            // this is space
-            ;
-        } else if (t.type == BLANK_T) {
+        if (t.type == BLANK_T) {
             // this is wrong
             printf("Lexical error found at line %d column %d: %s\n", row_number, column_number, t.value);
             return 2;
